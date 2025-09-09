@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://3al40two1l52"]
+
+[ext_resource type="Script" uid="uid://dsmbuo6isfw4e" path="res://spikes.gd" id="1_gh1nn"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_gh1nn")
+
+[node name="SpikeTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
