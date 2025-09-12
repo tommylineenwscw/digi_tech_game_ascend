@@ -10,17 +10,24 @@ signal dash_pressed
 @onready var timer: Timer = $DashTimer
 @onready var movable: Timer = $Movable
 
+func _ready():
+	$Movable.wait_time = 0.001
+	movable.start()
+
 func _physics_process(delta: float) -> void:
-	print(CAN_DASH)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	elif CAN_DASH >= 0:
 		CAN_DASH = 1
-
+	
+	if velocity.x == (0.0):
+		$AnimatedSprite2D.play("idle")
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		print(velocity.y)
 		
 	if Input.is_action_just_pressed("dash"):
 		emit_signal("dash_pressed")
@@ -74,6 +81,7 @@ func _on_dash_timer_timeout() -> void:
 func _on_movable_timeout() -> void:
 	var direction := Input.get_axis("left move", "right move")
 	if direction:
+		$AnimatedSprite2D.play("run")
 		$Movable.wait_time = 0.001
 		velocity.x = direction * SPEED
 		
@@ -82,6 +90,7 @@ func _on_movable_timeout() -> void:
 		
 		if direction == 1.0:
 			$AnimatedSprite2D.flip_h = false
+			
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.x -= velocity.x
