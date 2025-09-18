@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0l6o80cov7lg"]
+
+[ext_resource type="Texture2D" uid="uid://87f2w4uqemq6" path="res://assets/sprites/platforms.png" id="1_jhwlc"]
+[ext_resource type="PackedScene" uid="uid://cxy7hv2w8jyyc" path="res://scenes/killzone.tscn" id="2_r6x7o"]
+[ext_resource type="Script" uid="uid://d2qq6x6qh25ei" path="res://scripts/break_platform.gd" id="3_bnedf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(32, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnedf"]
+size = Vector2(32, 7.875)
+
+[node name="Platform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jhwlc")
+region_enabled = true
+region_rect = Rect2(16.0064, 16.0947, 31.8645, 8.74667)
+
+[node name="Stand" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nlgqw")
+one_way_collision = true
+
+[node name="Hide" parent="." instance=ExtResource("2_r6x7o")]
+position = Vector2(76, 130)
+script = ExtResource("3_bnedf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hide"]
+position = Vector2(-76, -131)
+shape = SubResource("RectangleShape2D_bnedf")
+
+[node name="Break" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Return" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Break" to="Hide" method="_on_break_timeout"]
+[connection signal="timeout" from="Return" to="Hide" method="_on_return_timeout"]
