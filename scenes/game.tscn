@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://if23e47072eb"]
+[gd_scene load_steps=13 format=4 uid="uid://if23e47072eb"]
 
 [ext_resource type="PackedScene" uid="uid://bqglaa1n1uk0a" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dofs4gdpf77ee" path="res://assets/sprites/world_tileset.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dbeopv8wfjy72" path="res://scenes/platform.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cxy7hv2w8jyyc" path="res://scenes/killzone.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cxl5d0hym544k" path="res://scenes/stopwatch.tscn" id="5_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -251,3 +252,5 @@ position = Vector2(76, 130)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes"]
 position = Vector2(-101, -89)
 shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="Stopwatch" parent="." instance=ExtResource("5_iywne")]
