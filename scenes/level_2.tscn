@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://btfxa5nh7e8cb"]
+
+[ext_resource type="Texture2D" uid="uid://lgsa4c8qqi7n" path="res://assets/sprites/what.png" id="1_3bmlt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jm1iu"]
+texture = ExtResource("1_3bmlt")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+14:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pbc48"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_jm1iu")
+
+[node name="level2" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 252, 255, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 252, 255, 0, 0, 8, 0, 0, 0, 0, 0, 2, 0, 252, 255, 0, 0, 2, 0, 3, 0, 0, 0, 1, 0, 253, 255, 0, 0, 3, 0, 1, 0, 0, 0, 1, 0, 254, 255, 0, 0, 3, 0, 2, 0, 0, 0)
+tile_set = SubResource("TileSet_pbc48")
