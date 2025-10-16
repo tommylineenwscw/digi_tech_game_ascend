@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqqu7xh2fywf7"]
+[gd_scene load_steps=6 format=3 uid="uid://bqqu7xh2fywf7"]
 
+[ext_resource type="Texture2D" uid="uid://lgsa4c8qqi7n" path="res://assets/sprites/what.png" id="1_gm01p"]
 [ext_resource type="PackedScene" uid="uid://cxy7hv2w8jyyc" path="res://scenes/killzone.tscn" id="2_c4mkd"]
 [ext_resource type="Script" uid="uid://d2qq6x6qh25ei" path="res://scripts/break_platform.gd" id="3_wwdyp"]
 
@@ -10,6 +11,12 @@ size = Vector2(16, 8)
 size = Vector2(16, 7.875)
 
 [node name="Platform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8, 3)
+texture = ExtResource("1_gm01p")
+region_enabled = true
+region_rect = Rect2(223.781, -0.570109, 16.3265, 17.1165)
 
 [node name="Stand" type="CollisionShape2D" parent="."]
 position = Vector2(-8, 0)

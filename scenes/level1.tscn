@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://kmnsdpbr4yhc"]
+[gd_scene load_steps=10 format=4 uid="uid://kmnsdpbr4yhc"]
 
 [ext_resource type="PackedScene" uid="uid://bqglaa1n1uk0a" path="res://scenes/player.tscn" id="1_dwgg1"]
 [ext_resource type="PackedScene" uid="uid://cop4o6skolb8l" path="res://scenes/rock_platform.tscn" id="1_ru4tf"]
-[ext_resource type="Texture2D" uid="uid://dofs4gdpf77ee" path="res://assets/sprites/world_tileset.png" id="2_ru4tf"]
+[ext_resource type="Texture2D" uid="uid://dofs4gdpf77ee" path="res://assets/sprites/Baseplate/world_tileset.png" id="2_ru4tf"]
 [ext_resource type="PackedScene" uid="uid://cxy7hv2w8jyyc" path="res://scenes/killzone.tscn" id="4_ejswk"]
 [ext_resource type="PackedScene" uid="uid://c0l6o80cov7lg" path="res://scenes/disappearing_platform.tscn" id="5_ru4tf"]
 
@@ -174,9 +174,6 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
-size = Vector2(47.625, 10)
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ru4tf"]
 
 [node name="Game" type="Node2D"]
@@ -210,20 +207,6 @@ position = Vector2(80, 131)
 position = Vector2(-21, 42)
 shape = SubResource("WorldBoundaryShape2D_lbhrr")
 
-[node name="Spikes" parent="." instance=ExtResource("4_ejswk")]
-position = Vector2(79, 137)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes"]
-position = Vector2(59.8125, -174)
-shape = SubResource("RectangleShape2D_lbhrr")
-
-[node name="Spikes2" parent="." instance=ExtResource("4_ejswk")]
-position = Vector2(79, 137)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes2"]
-position = Vector2(74.375, -110)
-shape = SubResource("RectangleShape2D_lbhrr")
-
 [node name="Platform" parent="." instance=ExtResource("5_ru4tf")]
 position = Vector2(301, -27)
 
@@ -236,6 +219,6 @@ position = Vector2(303, -140)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(244, -175)
+position = Vector2(246, -175)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_ru4tf")

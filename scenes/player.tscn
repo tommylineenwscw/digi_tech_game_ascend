@@ -91,14 +91,13 @@ script = ExtResource("1_g2els")
 wait_time = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -13)
 sprite_frames = SubResource("SpriteFrames_d2wvv")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.243809
+frame_progress = 0.156587
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.75, -10)
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="Movable" type="Timer" parent="."]

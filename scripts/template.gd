@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 var CAN_DASH: float = true
 const SPEED = 55.0
 const JUMP_VELOCITY = -250.0
@@ -13,7 +12,7 @@ signal dash_pressed
 func _ready():
 	$Movable.wait_time = 0.001
 	movable.start()
-
+	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -48,26 +47,25 @@ func _physics_process(delta: float) -> void:
 
 func _on_dash_pressed() -> void:
 	if CAN_DASH == 1:
-		$Movable.wait_time = 0.2
+		$Movable.wait_time = 0.25
 		movable.start()
 		CAN_DASH = -1
 		timer.start()
-		
+
 		if Input.is_action_just_pressed("left move"):
 			var direction := Input.get_axis("left move", "right move")
 			velocity.x += direction + DASH
-			
+
 		if Input.is_action_just_pressed("right move"):
 			var direction := Input.get_axis("left move", "right move")
 			velocity.x += direction + DASH
-		
+
 		elif $AnimatedSprite2D.flip_h == true:
 			velocity.x = DASH * -1
-		
+
 		else:
 			velocity.x = DASH
-	
-			
+
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
@@ -84,15 +82,21 @@ func _on_movable_timeout() -> void:
 		$AnimatedSprite2D.play("run")
 		$Movable.wait_time = 0.001
 		velocity.x = direction * SPEED
-		
+
 		if direction == -1.0:
 			$AnimatedSprite2D.flip_h = true
-		
+			$AnimatedSprite2D.offset = Vector2(2, 0)
+
 		if direction == 1.0:
 			$AnimatedSprite2D.flip_h = false
-			
+			$AnimatedSprite2D.offset = Vector2(0, 0)
+
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.x -= velocity.x
 		
 	move_and_slide()
+	
+	
+	
+	
