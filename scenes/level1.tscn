@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://kmnsdpbr4yhc"]
+[gd_scene load_steps=11 format=4 uid="uid://kmnsdpbr4yhc"]
 
 [ext_resource type="PackedScene" uid="uid://bqglaa1n1uk0a" path="res://scenes/player.tscn" id="1_dwgg1"]
 [ext_resource type="PackedScene" uid="uid://cop4o6skolb8l" path="res://scenes/rock_platform.tscn" id="1_ru4tf"]
 [ext_resource type="Texture2D" uid="uid://dofs4gdpf77ee" path="res://assets/sprites/Baseplate/world_tileset.png" id="2_ru4tf"]
 [ext_resource type="PackedScene" uid="uid://cxy7hv2w8jyyc" path="res://scenes/killzone.tscn" id="4_ejswk"]
 [ext_resource type="PackedScene" uid="uid://c0l6o80cov7lg" path="res://scenes/disappearing_platform.tscn" id="5_ru4tf"]
+[ext_resource type="Script" uid="uid://427mdkqges2e" path="res://scripts/l_2_door.gd" id="6_6sh32"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_ru4tf")
@@ -188,7 +189,7 @@ position = Vector2(58, 23)
 position = Vector2(63, -55)
 
 [node name="Player" parent="." instance=ExtResource("1_dwgg1")]
-position = Vector2(23, 80)
+position = Vector2(23, 69)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(18, 2)
@@ -216,9 +217,12 @@ position = Vector2(258, -79)
 [node name="Platform6" parent="." instance=ExtResource("5_ru4tf")]
 position = Vector2(303, -140)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="L2Door" type="Area2D" parent="."]
+script = ExtResource("6_6sh32")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(246, -175)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="L2Door"]
+position = Vector2(251, -190)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_ru4tf")
+
+[connection signal="body_entered" from="L2Door" to="L2Door" method="_on_body_entered"]

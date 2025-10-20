@@ -52,15 +52,7 @@ func _on_dash_pressed() -> void:
 		CAN_DASH = -1
 		timer.start()
 
-		if Input.is_action_just_pressed("left move"):
-			var direction := Input.get_axis("left move", "right move")
-			velocity.x += direction + DASH
-
-		if Input.is_action_just_pressed("right move"):
-			var direction := Input.get_axis("left move", "right move")
-			velocity.x += direction + DASH
-
-		elif $AnimatedSprite2D.flip_h == true:
+		if $AnimatedSprite2D.flip_h == true:
 			velocity.x = DASH * -1
 
 		else:
@@ -96,7 +88,6 @@ func _on_movable_timeout() -> void:
 		velocity.x -= velocity.x
 		
 	move_and_slide()
-	
-	
-	
-	
+
+func _on_chicken_dash_refreshed() -> void:
+	CAN_DASH = 1

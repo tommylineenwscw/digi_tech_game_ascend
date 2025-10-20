@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://if23e47072eb"]
+[gd_scene load_steps=15 format=4 uid="uid://if23e47072eb"]
 
 [ext_resource type="PackedScene" uid="uid://bqglaa1n1uk0a" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dofs4gdpf77ee" path="res://assets/sprites/Baseplate/world_tileset.png" id="2_yqjtg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dbeopv8wfjy72" path="res://scenes/platform.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cxy7hv2w8jyyc" path="res://scenes/killzone.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://3al40two1l52" path="res://scenes/Spikes.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://8dbgxvcsyew6" path="res://scenes/chicken.tscn" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -297,3 +298,8 @@ position = Vector2(12, 35)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3.305, 3.305)
 limit_bottom = 100
+
+[node name="Chicken" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(89, 11)
+
+[connection signal="dash_refreshed" from="Chicken" to="Player" method="_on_chicken_dash_refreshed"]

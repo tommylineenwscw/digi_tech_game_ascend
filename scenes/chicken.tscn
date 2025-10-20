@@ -4,35 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c7o6p32k7vr0p" path="res://assets/sprites/dash_reset_touch_animation.png" id="1_8lku0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yv3s"]
-size = Vector2(48, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nutj5"]
-atlas = ExtResource("1_8lku0")
-region = Rect2(33, 200, 33, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rc7ma"]
-atlas = ExtResource("1_8lku0")
-region = Rect2(231, 100, 33, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0du8g"]
-atlas = ExtResource("1_8lku0")
-region = Rect2(132, 100, 33, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bti8l"]
-atlas = ExtResource("1_8lku0")
-region = Rect2(33, 100, 33, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pep2a"]
-atlas = ExtResource("1_8lku0")
-region = Rect2(132, 0, 33, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5sgx4"]
-atlas = ExtResource("1_8lku0")
-region = Rect2(231, 0, 33, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8aah5"]
-atlas = ExtResource("1_8lku0")
-region = Rect2(33, 0, 33, 100)
+size = Vector2(21, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fwex"]
 atlas = ExtResource("1_8lku0")
@@ -62,34 +34,36 @@ region = Rect2(231, 100, 33, 100)
 atlas = ExtResource("1_8lku0")
 region = Rect2(33, 200, 33, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nutj5"]
+atlas = ExtResource("1_8lku0")
+region = Rect2(33, 200, 33, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc7ma"]
+atlas = ExtResource("1_8lku0")
+region = Rect2(231, 100, 33, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0du8g"]
+atlas = ExtResource("1_8lku0")
+region = Rect2(132, 100, 33, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bti8l"]
+atlas = ExtResource("1_8lku0")
+region = Rect2(33, 100, 33, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pep2a"]
+atlas = ExtResource("1_8lku0")
+region = Rect2(132, 0, 33, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sgx4"]
+atlas = ExtResource("1_8lku0")
+region = Rect2(231, 0, 33, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aah5"]
+atlas = ExtResource("1_8lku0")
+region = Rect2(33, 0, 33, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_njpjb"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nutj5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rc7ma")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0du8g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bti8l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pep2a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5sgx4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8aah5")
-}],
-"loop": false,
-"name": &"eat",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1fwex")
@@ -113,21 +87,52 @@ animations = [{
 "texture": SubResource("AtlasTexture_cjd2c")
 }],
 "loop": false,
-"name": &"reset",
+"name": &"eat",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nutj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc7ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0du8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bti8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pep2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sgx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aah5")
+}],
+"loop": false,
+"name": &"reset",
+"speed": 7.5
 }]
 
-[node name="Chicken" type="Area2D"]
+[node name="Chicken" type="Area2D" groups=["chicken"]]
 script = ExtResource("1_1yv3s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(19, 12.5)
+position = Vector2(16.5, 11.5)
 shape = SubResource("RectangleShape2D_1yv3s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(19, 14)
+position = Vector2(18, 16)
 sprite_frames = SubResource("SpriteFrames_njpjb")
-animation = &"eat"
+animation = &"reset"
+autoplay = "reset"
 
 [node name="Eaten" type="Timer" parent="."]
+wait_time = 4.0
 one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Eaten" to="." method="_on_eaten_timeout"]
