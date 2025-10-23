@@ -1,6 +1,9 @@
 extends Area2D
+signal spikes
 
-func _on_body_entered(body: CollisionShape2D) -> void:
+func _on_body_entered(body: CharacterBody2D) -> void:
 	print("Detected")
-	Engine.time_scale = 0.75
-	body.get_node("SpikesHitBox").queue_free()
+	Engine.time_scale = 0.3
+	$"../TileMapLayer".collision_enabled = false
+	emit_signal("spikes")
+	

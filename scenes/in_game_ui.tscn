@@ -1,0 +1,122 @@
+[gd_scene load_steps=13 format=3 uid="uid://dqnjmnj8s801f"]
+
+[ext_resource type="Texture2D" uid="uid://do87221frl738" path="res://assets/sprites/Ui/possible_background.png" id="1_fnge6"]
+[ext_resource type="Texture2D" uid="uid://cgh7tl2dchfm4" path="res://assets/sprites/Ui/start_button_click_animation.png" id="2_a45jx"]
+[ext_resource type="Script" uid="uid://bj1lnu3pbkjnr" path="res://scripts/button.gd" id="3_a45jx"]
+[ext_resource type="Texture2D" uid="uid://cwsmwdx53phoy" path="res://assets/sprites/Ui/exit_button_ui.png" id="4_fqvwy"]
+[ext_resource type="Script" uid="uid://bc6wx70u5x4be" path="res://scripts/button_2.gd" id="4_ria60"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqvwy"]
+atlas = ExtResource("2_a45jx")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ria60"]
+atlas = ExtResource("2_a45jx")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qwj3"]
+atlas = ExtResource("2_a45jx")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_276nr"]
+atlas = ExtResource("2_a45jx")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04xgm"]
+atlas = ExtResource("2_a45jx")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qinws"]
+atlas = ExtResource("2_a45jx")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlb72"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqvwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ria60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qwj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_276nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04xgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qinws")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="startMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_fnge6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 400.045)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 140.625)
+layout_mode = 2
+size_flags_vertical = 6
+flat = true
+script = ExtResource("3_a45jx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/Button"]
+position = Vector2(179, 94)
+scale = Vector2(7.04, 7.40125)
+sprite_frames = SubResource("SpriteFrames_jlb72")
+frame = 5
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="MarginContainer/VBoxContainer/Button"]
+wait_time = 0.5
+one_shot = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 121.025)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+flat = true
+script = ExtResource("4_ria60")
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+position = Vector2(134, 19.5)
+scale = Vector2(5.32, 6.65)
+texture = ExtResource("4_fqvwy")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="MarginContainer/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="timeout" from="MarginContainer/VBoxContainer/Button/Timer" to="MarginContainer/VBoxContainer/Button" method="_on_timer_timeout"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Button2" to="MarginContainer/VBoxContainer/VBoxContainer/Button2" method="_on_pressed"]

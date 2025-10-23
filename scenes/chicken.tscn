@@ -127,8 +127,10 @@ shape = SubResource("RectangleShape2D_1yv3s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(18, 16)
 sprite_frames = SubResource("SpriteFrames_njpjb")
-animation = &"reset"
+animation = &"eat"
 autoplay = "reset"
+frame = 6
+frame_progress = 1.0
 
 [node name="Eaten" type="Timer" parent="."]
 wait_time = 4.0

@@ -1,22 +1,74 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqqu7xh2fywf7"]
+[gd_scene load_steps=13 format=3 uid="uid://bqqu7xh2fywf7"]
 
-[ext_resource type="Texture2D" uid="uid://lgsa4c8qqi7n" path="res://assets/sprites/what.png" id="1_gm01p"]
+[ext_resource type="Texture2D" uid="uid://blv35m1acvarw" path="res://assets/sprites/platform_disappear.png" id="1_gm01p"]
 [ext_resource type="PackedScene" uid="uid://cxy7hv2w8jyyc" path="res://scenes/killzone.tscn" id="2_c4mkd"]
 [ext_resource type="Script" uid="uid://d2qq6x6qh25ei" path="res://scripts/break_platform.gd" id="3_wwdyp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4mkd"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwdyp"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up431"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocae4"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vanii"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yy2j"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(100, 50, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ld81"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4mkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwdyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up431")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocae4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vanii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yy2j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
 size = Vector2(16, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnedf"]
-size = Vector2(16, 7.875)
+size = Vector2(16, 0.9375)
 
 [node name="Platform" type="AnimatableBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-8, 3)
-texture = ExtResource("1_gm01p")
-region_enabled = true
-region_rect = Rect2(223.781, -0.570109, 16.3265, 17.1165)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7.91896, 1.05124)
+rotation = 3.14159
+scale = Vector2(0.99618, -0.746367)
+sprite_frames = SubResource("SpriteFrames_1ld81")
+frame = 2
+frame_progress = 0.993524
 
 [node name="Stand" type="CollisionShape2D" parent="."]
 position = Vector2(-8, 0)
@@ -28,7 +80,7 @@ position = Vector2(76, 130)
 script = ExtResource("3_wwdyp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hide"]
-position = Vector2(-84, -131)
+position = Vector2(-84, -134.469)
 shape = SubResource("RectangleShape2D_bnedf")
 
 [node name="Break" type="Timer" parent="."]

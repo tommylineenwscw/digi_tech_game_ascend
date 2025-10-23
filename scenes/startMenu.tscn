@@ -1,0 +1,173 @@
+[gd_scene load_steps=21 format=3 uid="uid://dup86s7msio5x"]
+
+[ext_resource type="Texture2D" uid="uid://do87221frl738" path="res://assets/sprites/Ui/possible_background.png" id="1_8fwge"]
+[ext_resource type="Texture2D" uid="uid://dprlmi464xu12" path="res://assets/sprites/Ui/game_title_animate_draft.png" id="2_7kfin"]
+[ext_resource type="Script" uid="uid://bj1lnu3pbkjnr" path="res://scripts/button.gd" id="2_yhodh"]
+[ext_resource type="Texture2D" uid="uid://cgh7tl2dchfm4" path="res://assets/sprites/Ui/start_button_click_animation.png" id="3_7kfin"]
+[ext_resource type="Script" uid="uid://btd0ikkxt17xg" path="res://scripts/title.gd" id="3_nk48g"]
+[ext_resource type="Script" uid="uid://bc6wx70u5x4be" path="res://scripts/button_2.gd" id="4_nk48g"]
+[ext_resource type="Texture2D" uid="uid://cwsmwdx53phoy" path="res://assets/sprites/Ui/exit_button_ui.png" id="5_bq4j4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ria60"]
+atlas = ExtResource("3_7kfin")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qwj3"]
+atlas = ExtResource("3_7kfin")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_276nr"]
+atlas = ExtResource("3_7kfin")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04xgm"]
+atlas = ExtResource("3_7kfin")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qinws"]
+atlas = ExtResource("3_7kfin")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlb72"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ria60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qwj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_276nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04xgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qinws")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq4j4"]
+atlas = ExtResource("2_7kfin")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1stqc"]
+atlas = ExtResource("2_7kfin")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gam2g"]
+atlas = ExtResource("2_7kfin")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwyin"]
+atlas = ExtResource("2_7kfin")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5126e"]
+atlas = ExtResource("2_7kfin")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgtcr"]
+atlas = ExtResource("2_7kfin")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_at2ir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq4j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1stqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gam2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwyin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5126e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgtcr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="startMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_8fwge")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 400.045)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 140.625)
+layout_mode = 2
+size_flags_vertical = 6
+flat = true
+script = ExtResource("2_yhodh")
+
+[node name="Timer" type="Timer" parent="MarginContainer/VBoxContainer/Button"]
+wait_time = 0.75
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/Button"]
+position = Vector2(179, 94)
+scale = Vector2(7.04, 7.40125)
+sprite_frames = SubResource("SpriteFrames_jlb72")
+frame = 4
+frame_progress = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 121.025)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+flat = true
+script = ExtResource("4_nk48g")
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+position = Vector2(134, 19.5)
+scale = Vector2(5.32, 6.65)
+texture = ExtResource("5_bq4j4")
+
+[node name="title" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer/Sprite2D"]
+position = Vector2(4.13534, -43.3835)
+scale = Vector2(2.21429, 0.738346)
+sprite_frames = SubResource("SpriteFrames_at2ir")
+frame_progress = 0.0472763
+script = ExtResource("3_nk48g")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="MarginContainer/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="timeout" from="MarginContainer/VBoxContainer/Button/Timer" to="MarginContainer/VBoxContainer/Button" method="_on_timer_timeout"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Button2" to="MarginContainer/VBoxContainer/VBoxContainer/Button2" method="_on_pressed"]
