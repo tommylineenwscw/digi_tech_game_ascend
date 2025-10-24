@@ -1,0 +1,152 @@
+[gd_scene load_steps=20 format=3 uid="uid://bqqu7xh2fywf7"]
+
+[ext_resource type="Texture2D" uid="uid://blv35m1acvarw" path="res://assets/sprites/platform_disappear.png" id="1_gm01p"]
+[ext_resource type="PackedScene" uid="uid://cxy7hv2w8jyyc" path="res://scenes/killzone.tscn" id="2_c4mkd"]
+[ext_resource type="Script" uid="uid://d2qq6x6qh25ei" path="res://scripts/break_platform.gd" id="3_wwdyp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ld81"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(100, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcmy2"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foohd"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy21b"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toegy"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf6gk"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm01p"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(60, 0, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4mkd"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwdyp"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up431"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocae4"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vanii"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yy2j"]
+atlas = ExtResource("1_gm01p")
+region = Rect2(100, 50, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ld81"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ld81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcmy2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foohd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy21b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toegy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf6gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm01p")
+}],
+"loop": false,
+"name": &"come_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm01p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4mkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwdyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up431")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocae4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vanii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yy2j")
+}],
+"loop": false,
+"name": &"go",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(16, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnedf"]
+size = Vector2(16, 0.9375)
+
+[node name="Platform" type="AnimatableBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, -4)
+rotation = 3.14159
+scale = Vector2(0.539708, -0.746367)
+sprite_frames = SubResource("SpriteFrames_1ld81")
+animation = &"come_back"
+autoplay = "come_back"
+
+[node name="Stand" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -2.5)
+shape = SubResource("RectangleShape2D_nlgqw")
+one_way_collision = true
+
+[node name="Hide" parent="." instance=ExtResource("2_c4mkd")]
+position = Vector2(76, 130)
+script = ExtResource("3_wwdyp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hide"]
+position = Vector2(-84, -134.469)
+shape = SubResource("RectangleShape2D_bnedf")
+
+[node name="Break" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Return" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Break" to="Hide" method="_on_break_timeout"]
+[connection signal="timeout" from="Return" to="Hide" method="_on_return_timeout"]

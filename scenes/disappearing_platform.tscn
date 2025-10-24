@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0l6o80cov7lg"]
 
-[ext_resource type="Texture2D" uid="uid://87f2w4uqemq6" path="res://assets/sprites/platforms.png" id="1_jhwlc"]
+[ext_resource type="Texture2D" uid="uid://87f2w4uqemq6" path="res://assets/sprites/Baseplate/platforms.png" id="1_jhwlc"]
 [ext_resource type="PackedScene" uid="uid://cxy7hv2w8jyyc" path="res://scenes/killzone.tscn" id="2_r6x7o"]
 [ext_resource type="Script" uid="uid://d2qq6x6qh25ei" path="res://scripts/break_platform.gd" id="3_bnedf"]
 
@@ -30,7 +30,6 @@ position = Vector2(-76, -131)
 shape = SubResource("RectangleShape2D_bnedf")
 
 [node name="Break" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="Return" type="Timer" parent="."]
