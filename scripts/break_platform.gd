@@ -5,11 +5,12 @@ extends Area2D
 
 func _on_body_entered(body: CharacterBody2D) -> void:
 	print ("You stood on breakble platform")
-	#$"../AnimatedSprite2D".animation = 
+	$"../AnimatedSprite2D".play("go")
 	Destroy.start()
 	
 func _on_return_timeout() -> void:
 	print ("return")
+	$"../AnimatedSprite2D".play("come_back")
 	$"../Stand".disabled = false
 	$"../AnimatedSprite2D".visible = true
 

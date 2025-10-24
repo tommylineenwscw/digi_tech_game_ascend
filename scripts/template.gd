@@ -23,8 +23,11 @@ func _physics_process(delta: float) -> void:
 	elif CAN_DASH >= 0:
 		CAN_DASH = 1
 	
-	if velocity.x == (0.0) and dead == 0 and $Movable.wait_time == 0.001:
-		if CAN_DASH >= 0:
+	if velocity.x == (0.0) and dead == 0:
+		if $Movable.wait_time < 0.001:
+			$PlayerAnimations.play("dash")
+		
+		elif CAN_DASH >= 0:
 			$PlayerAnimations.play("idle")
 		else:
 			$PlayerAnimations.play("no_dash_idle")
@@ -52,7 +55,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_dash_pressed() -> void:
 	if CAN_DASH == 1:
-		$PlayerAnimations.play("dash")
 		$Movable.wait_time = 0.25
 		movable.start()
 		CAN_DASH = -1
