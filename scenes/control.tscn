@@ -4,7 +4,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_5p55f"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("stopwatch_label")]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,6 @@ offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5p55f")
-stopwatch_label = NodePath("StopwatchLabel")
 
 [node name="StopwatchLabel" type="Label" parent="."]
 layout_mode = 0

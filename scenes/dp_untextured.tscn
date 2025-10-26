@@ -127,7 +127,7 @@ sprite_frames = SubResource("SpriteFrames_1ld81")
 animation = &"come_back"
 autoplay = "come_back"
 
-[node name="Stand" type="CollisionShape2D" parent="."]
+[node name="Stand" type="CollisionShape2D" parent="." groups=["platform"]]
 position = Vector2(-8, -2.5)
 shape = SubResource("RectangleShape2D_nlgqw")
 one_way_collision = true
